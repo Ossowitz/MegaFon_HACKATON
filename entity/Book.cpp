@@ -1,6 +1,15 @@
 #include "Book.h"
 
 #include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <fstream>
+#include <sstream>
+#include <filesystem>
+#include <chrono>
+#include <iomanip>
+
 
 using namespace std;
 
@@ -20,3 +29,11 @@ void Book::display() const {
         << ", Return by: " << returnDate << endl;
     }
 }
+
+string Book::serialize() const {
+    ostringstream oss;
+    oss << title << ";" << author << ";" << genre << ";"
+        << currentBorrowerID << ";" << borrowDate << ";" << returnDate;
+    return oss.str();
+}
+
