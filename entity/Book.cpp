@@ -37,3 +37,20 @@ string Book::serialize() const {
     return oss.str();
 }
 
+Book Book::deserialize(const std::string& data) {
+    std::istringstream iss(data);
+    std::string t, a, g, borrowerId, bDate, rDate;
+    std::getline(iss, t, ';');
+    std::getline(iss, a, ';');
+    std::getline(iss, g, ';');
+    std::getline(iss, borrowerId, ';');
+    std::getline(iss, bDate, ';');
+    std::getline(iss, rDate);
+
+    Book book(t, a, g);
+    book.currentBorrowerID = borrowerId;
+    book.borrowDate = bDate;
+    book.returnDate = rDate;
+
+    return book;
+}
