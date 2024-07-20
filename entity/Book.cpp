@@ -40,6 +40,7 @@ string Book::serialize() const {
 Book Book::deserialize(const std::string& data) {
     std::istringstream iss(data);
     std::string title, author, genre, borrowerId, bDate, rDate;
+
     std::getline(iss, title, ';');
     std::getline(iss, author, ';');
     std::getline(iss, genre, ';');
@@ -48,6 +49,7 @@ Book Book::deserialize(const std::string& data) {
     std::getline(iss, rDate);
 
     Book book(title, author, genre);
+
     book.currentBorrowerID = borrowerId;
     book.borrowDate = bDate;
     book.returnDate = rDate;

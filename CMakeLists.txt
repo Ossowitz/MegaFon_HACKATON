@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.29)
-project(LibraryAutomation__)
+project(LibraryAutomation)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 17)
 
-add_executable(LibraryAutomation__ main.cpp
+add_executable(LibraryAutomation main.cpp
         entity/Book.cpp
-        entity/Book.h)
+        entity/Book.h
+        entity/Reader.cpp
+        entity/Reader.h
+)
