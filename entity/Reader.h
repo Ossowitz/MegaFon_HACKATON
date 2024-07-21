@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-#include <iomanip>
 
 class Book;
 using namespace std;
@@ -12,16 +11,19 @@ class Reader {
 public:
     string passport;
     string name;
-    string readerId;
+    string readerID;
     vector<string> borrowedBookTitles;
 
-    Reader(const string& p, const string& n, const string& id);
+    Reader(const std::string& p, const std::string& n, const std::string& id);
 
-    void display();
+    void display() const;
     string serialize() const;
     static Reader deserialize(const string& data);
-    void borrowBook(Book& book, const std::string& dateToReturn);
-    void returnBook(const std::string& title);
+    void borrowBook(Book& book, const string& dateToReturn);
+    void returnBook(const string& title);
+
+private:
+    std::string getCurrentDate();
 };
 
-#endif //READER_H
+#endif // READER_H

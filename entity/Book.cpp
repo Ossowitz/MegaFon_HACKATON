@@ -1,5 +1,3 @@
-#include "Book.h"
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -10,6 +8,7 @@
 #include <chrono>
 #include <iomanip>
 
+#include "Book.h"
 
 using namespace std;
 
