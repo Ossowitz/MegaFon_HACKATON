@@ -13,5 +13,25 @@
 
 using namespace std;
 
-Reader::Reader(const std::string& p, const std::string& n, const std::string& id)
+Reader::Reader(const string& p, const string& n, const string& id)
     : passport(p), name(n), readerID(id) {}
+
+void Reader::display() const {
+    cout << "Passport: " << passport
+              << ", Name: " << name
+              << ", Reader ID: " << readerID << endl;
+    cout << "Borrowed Books:\n";
+    for (const string& title : borrowedBookTitles) {
+        cout << " - " << title << endl;
+    }
+}
+
+string Reader::serialize() const {
+    ostringstream oss;
+    oss << passport << ";" << name << ";" << readerID << ";";
+    for (const string& title : borrowedBookTitles) {
+        oss << title << ",";
+    }
+    return oss.str();
+}
+
