@@ -35,3 +35,23 @@ string Reader::serialize() const {
     return oss.str();
 }
 
+Reader Reader::deserialize(const std::string& data) {
+    std::istringstream iss(data);
+    std::string passport, name, readerID, borrowedBookTitles;
+
+    std::getline(iss, passport, ';');
+    std::getline(iss, name, ';');
+    std::getline(iss, readerID, ';');
+    std::getline(iss, borrowedBookTitles);
+
+    Reader reader(passport, name, readerID);
+
+    std::istringstream titlesStream(borrowedBookTitles);
+    std::string title;
+    while (std::getline(titlesStream, title, ',')) {
+        if (!title.empty()) {
+            reader.borrowedBookTitles.push_back(title);
+        }
+    }
+    return reader;
+}
