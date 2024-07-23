@@ -55,3 +55,10 @@ Reader Reader::deserialize(const std::string& data) {
     }
     return reader;
 }
+
+void Reader::borrowBook(Book& book, const std::string& dateToReturn) {
+    borrowedBookTitles.push_back(book.title);
+    book.currentBorrowerID = readerID;
+    book.borrowDate = getCurrentDate();
+    book.returnDate = dateToReturn;
+}
