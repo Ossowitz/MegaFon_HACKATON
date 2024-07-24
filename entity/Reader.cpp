@@ -62,3 +62,10 @@ void Reader::borrowBook(Book& book, const std::string& dateToReturn) {
     book.borrowDate = getCurrentDate();
     book.returnDate = dateToReturn;
 }
+
+void Reader::returnBook(const std::string& title) {
+    vector<string>::iterator it = std::remove(borrowedBookTitles.begin(), borrowedBookTitles.end(), title);
+    if (it != borrowedBookTitles.end()) {
+        borrowedBookTitles.erase(it, borrowedBookTitles.end());
+    }
+}
