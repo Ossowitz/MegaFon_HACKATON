@@ -23,7 +23,7 @@ public:
     void returnBook(const string& title);
 
 private:
-    std::string getCurrentDate();
+    static std::string getCurrentDate();
 };
 
 #endif // READER_H

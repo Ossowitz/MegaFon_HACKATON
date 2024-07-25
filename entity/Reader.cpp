@@ -64,8 +64,22 @@ void Reader::borrowBook(Book& book, const std::string& dateToReturn) {
 }
 
 void Reader::returnBook(const std::string& title) {
-    vector<string>::iterator it = std::remove(borrowedBookTitles.begin(), borrowedBookTitles.end(), title);
+    auto it = std::remove(borrowedBookTitles.begin(), borrowedBookTitles.end(), title);
     if (it != borrowedBookTitles.end()) {
         borrowedBookTitles.erase(it, borrowedBookTitles.end());
     }
+}
+
+string Reader::getCurrentDate() {
+    const auto now = chrono::system_clock::now();
+    time_t nowTime = chrono::system_clock::to_time_t(now);
+    tm nowTm;
+#ifdef _WIN32
+    localtime_s(&nowTm, &nowTime); // Windows
+#else
+    localtime_r(&nowTime, &nowTm); // Unix/Linux
+#endif
+    std::ostringstream oss;
+    oss << std::put_time(&nowTm, "%d-%m-%Y"); // Формат: dd-mm-yyyy
+    return oss.str();
 }
