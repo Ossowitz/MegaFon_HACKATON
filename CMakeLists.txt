@@ -8,4 +8,6 @@ add_executable(LibraryAutomation main.cpp
         entity/Book.h
         entity/Reader.cpp
         entity/Reader.h
+        entity/Library.cpp
+        entity/Library.h
 )
