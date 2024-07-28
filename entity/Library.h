@@ -17,14 +17,14 @@ private:
 public:
     void addBook(const Book& book);
     void addReader(const Reader& reader);
-    void loadBooksFromFile(const std::filesystem::path& filepath);
-    void loadReadersFromFile(const std::filesystem::path& filepath);
-    void saveBooksToFile(const std::filesystem::path& filepath) const;
-    void saveReadersToFile(const std::filesystem::path& filepath) const;
+    void loadBooksFromFile(const filesystem::path& filepath);
+    void loadReadersFromFile(const filesystem::path& filepath);
+    void saveBooksToFile(const filesystem::path& filepath) const;
+    void saveReadersToFile(const filesystem::path& filepath) const;
     void displayBooks() const;
     void displayReaders() const;
-    Book* findBook(const std::string& title);
-    Reader* findReader(const std::string& id);
+    Book* findBook(const string& title);
+    Reader* findReader(const string& id);
 };
 
 #endif //LIBRARY_H
