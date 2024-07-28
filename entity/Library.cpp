@@ -18,3 +18,14 @@ void Library::addReader(const Reader& reader) {
     readers.push_back(reader);
 }
 
+void Library::loadBooksFromFile(const std::filesystem::path& filepath) {
+    std::ifstream file(filepath);
+    std::string line;
+
+    books.clear();
+    while (std::getline(file, line)) {
+        if (!line.empty()) {
+            books.push_back(Book::deserialize(line));
+        }
+    }
+}
