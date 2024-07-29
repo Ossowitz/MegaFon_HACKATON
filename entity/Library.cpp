@@ -10,6 +10,8 @@
 
 #include "Library.h"
 
+using namespace std;
+
 void Library::addBook(const Book& book) {
     books.push_back(book);
 }
@@ -18,14 +20,27 @@ void Library::addReader(const Reader& reader) {
     readers.push_back(reader);
 }
 
-void Library::loadBooksFromFile(const std::filesystem::path& filepath) {
-    std::ifstream file(filepath);
-    std::string line;
+void Library::loadBooksFromFile(const filesystem::path& filepath) {
+    ifstream file(filepath);
+    string line;
 
     books.clear();
-    while (std::getline(file, line)) {
+    while (getline(file, line)) {
         if (!line.empty()) {
             books.push_back(Book::deserialize(line));
         }
     }
 }
+
+void Library::loadReadersFromFile(const filesystem::path& filepath) {
+    ifstream file(filepath);
+    string line;
+
+    readers.clear();
+    while (getline(file, line)) {
+        if (!line.empty()) {
+            readers.push_back(Reader::deserialize(line));
+        }
+    }
+}
+
