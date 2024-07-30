@@ -44,3 +44,17 @@ void Library::loadReadersFromFile(const filesystem::path& filepath) {
     }
 }
 
+void Library::saveBooksToFile(const filesystem::path& filepath) const {
+    ofstream file(filepath);
+    for (const auto& book : books) {
+        file << book.serialize() << endl;
+    }
+}
+
+void Library::saveReadersToFile(const filesystem::path& filepath) const {
+    ofstream file(filepath);
+    for (const auto& reader : readers) {
+        file << reader.serialize() << endl;
+    }
+}
+
