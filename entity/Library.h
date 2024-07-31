@@ -26,6 +26,7 @@ public:
     Book* findBook(const string& title);
     Reader* findReader(const string& id);
     static Book inputBook();
+    static Reader inputReader();
 };
 
 #endif //LIBRARY_H

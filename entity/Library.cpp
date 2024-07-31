@@ -105,3 +105,19 @@ Book Library::inputBook() {
 
     return Book(title, author, genre);
 }
+
+Reader Library::inputReader() {
+    std::string passport, name, readerID;
+
+    std::cout << "Enter passport number: ";
+    std::cin >> passport;
+
+    std::cout << "Enter reader name: ";
+    std::cin.ignore();
+    std::getline(std::cin, name);
+
+    std::cout << "Enter reader ID: ";
+    std::getline(std::cin, readerID);
+
+    return Reader(passport, name, readerID);
+}
