@@ -58,3 +58,16 @@ void Library::saveReadersToFile(const filesystem::path& filepath) const {
     }
 }
 
+void Library::displayBooks() const {
+    cout << "Books in Library:\n";
+    for (const auto& book : books) {
+        book.display();
+    }
+}
+
+void Library::displayReaders() const {
+    cout << "Readers in Library:\n";
+    for (const auto& reader : readers) {
+        reader.display();
+    }
+}
