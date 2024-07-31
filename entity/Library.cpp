@@ -71,3 +71,21 @@ void Library::displayReaders() const {
         reader.display();
     }
 }
+
+Book* Library::findBook(const std::string& title) {
+    for (auto& book : books) {
+        if (book.title == title) {
+            return &book;
+        }
+    }
+    return nullptr;
+}
+
+Reader* Library::findReader(const std::string& id) {
+    for (auto& reader : readers) {
+        if (reader.readerID == id) {
+            return &reader;
+        }
+    }
+    return nullptr;
+}
