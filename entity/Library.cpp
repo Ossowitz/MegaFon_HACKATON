@@ -89,3 +89,19 @@ Reader* Library::findReader(const std::string& id) {
     }
     return nullptr;
 }
+
+Book Library::inputBook() {
+    std::string title, author, genre;
+
+    std::cout << "Enter book title: ";
+    std::cin >> std::ws;
+    std::getline(std::cin, title);
+
+    std::cout << "Enter book author: ";
+    std::getline(std::cin, author);
+
+    std::cout << "Enter book genre: ";
+    std::getline(std::cin, genre);
+
+    return Book(title, author, genre);
+}
