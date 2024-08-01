@@ -10,6 +10,4 @@ add_executable(LibraryAutomation main.cpp
         entity/Reader.h
         entity/Library.cpp
         entity/Library.h
-        entity/InputHandler.cpp
-        entity/InputHandler.h
 )
