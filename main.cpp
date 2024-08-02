@@ -34,6 +34,36 @@ int main()
             << "7: Save and Exit\n"
             << "Your choice: ";
         cin >> choice;
+
+        switch (choice) {
+            case '1': {
+                Book newBook = Library::inputBook();
+                library.addBook(newBook);
+                break;
+            }
+            case '2': {
+                Reader newReader = Library::inputReader();
+                library.addReader(newReader);
+                break;
+            }
+            case '3': {
+                std::string readerID, bookTitle, returnDate;
+                std::cout << "Enter reader ID: ";
+                std::cin >> readerID;
+                std::cout << "Enter book title: ";
+                std::cin >> std::ws; // Очищаем пробелы
+                std::getline(std::cin, bookTitle);
+                std::cout << "Enter return date (dd-mm-yyyy): ";
+                std::getline(std::cin, returnDate);
+                Reader* reader = library.findReader(readerID);
+                if (Book* book = library.findBook(bookTitle); reader && book && book->currentBorrowerID.empty()) {
+                    reader->borrowBook(*book, returnDate);
+                } else {
+                    std::cout << "Error: Book is already borrowed or Reader not found." << std::endl;
+                }
+                break;
+            }
+        }
     }
     while (choice != '7');
 
