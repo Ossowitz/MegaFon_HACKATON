@@ -1,19 +1,13 @@
 #include <iostream>
-#include <vector>
 #include <string>
-#include <algorithm>
 #include <fstream>
-#include <sstream>
 #include <filesystem>
-#include <chrono>
-#include <iomanip>
 
 #include "entity/Library.h"
 
 using namespace std;
 
-int main()
-{
+int main() {
     Library library;
     const filesystem::path booksFile = "books.txt";
     const filesystem::path readersFile = "readers.txt";
@@ -63,6 +57,41 @@ int main()
                 }
                 break;
             }
+            case '4': {
+                std::string readerID, bookTitle;
+                std::cout << "Enter reader ID: ";
+                std::cin >> readerID;
+                std::cout << "Enter book title: ";
+                std::cin >> std::ws;
+                std::getline(std::cin, bookTitle);
+                if (Reader* reader = library.findReader(readerID)) {
+                    reader->returnBook(bookTitle);
+                    if (Book* book = library.findBook(bookTitle)) {
+                        book->currentBorrowerID = "";
+                        book->borrowDate = "";
+                        book->returnDate = "";
+                    }
+                } else {
+                    std::cout << "Reader not found." << std::endl;
+                }
+                break;
+            }
+            case '5': {
+                library.displayBooks();
+                break;
+            }
+            case '6': {
+                library.displayReaders();
+                break;
+            }
+            case '7': {
+                library.saveBooksToFile(booksFile);
+                library.saveReadersToFile(readersFile);
+                std::cout << "Data saved!" << std::endl;
+                break;
+            }
+            default:
+                std::cout << "Invalid choice, try again." << std::endl;
         }
     }
     while (choice != '7');
