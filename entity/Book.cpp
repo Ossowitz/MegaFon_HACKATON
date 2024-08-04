@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Book::Book(const std::string& t, const std::string& a, const std::string& g)
+Book::Book(const string& t, const string& a, const string& g)
     : title(t), author(a), genre(g), currentBorrowerID(""), borrowDate(""), returnDate("") {}
 
 void Book::display() const {
@@ -32,16 +32,16 @@ string Book::serialize() const {
     return oss.str();
 }
 
-Book Book::deserialize(const std::string& data) {
-    std::istringstream iss(data);
-    std::string title, author, genre, borrowerId, bDate, rDate;
+Book Book::deserialize(const string& data) {
+    istringstream iss(data);
+    string title, author, genre, borrowerId, bDate, rDate;
 
-    std::getline(iss, title, ';');
-    std::getline(iss, author, ';');
-    std::getline(iss, genre, ';');
-    std::getline(iss, borrowerId, ';');
-    std::getline(iss, bDate, ';');
-    std::getline(iss, rDate);
+    getline(iss, title, ';');
+    getline(iss, author, ';');
+    getline(iss, genre, ';');
+    getline(iss, borrowerId, ';');
+    getline(iss, bDate, ';');
+    getline(iss, rDate);
 
     Book book(title, author, genre);
 

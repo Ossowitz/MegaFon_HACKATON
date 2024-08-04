@@ -35,20 +35,20 @@ string Reader::serialize() const {
     return oss.str();
 }
 
-Reader Reader::deserialize(const std::string& data) {
-    std::istringstream iss(data);
-    std::string passport, name, readerID, borrowedBookTitles;
+Reader Reader::deserialize(const string& data) {
+    istringstream iss(data);
+    string passport, name, readerID, borrowedBookTitles;
 
-    std::getline(iss, passport, ';');
-    std::getline(iss, name, ';');
-    std::getline(iss, readerID, ';');
-    std::getline(iss, borrowedBookTitles);
+    getline(iss, passport, ';');
+    getline(iss, name, ';');
+    getline(iss, readerID, ';');
+    getline(iss, borrowedBookTitles);
 
     Reader reader(passport, name, readerID);
 
-    std::istringstream titlesStream(borrowedBookTitles);
-    std::string title;
-    while (std::getline(titlesStream, title, ',')) {
+    istringstream titlesStream(borrowedBookTitles);
+    string title;
+    while (getline(titlesStream, title, ',')) {
         if (!title.empty()) {
             reader.borrowedBookTitles.push_back(title);
         }
@@ -56,15 +56,15 @@ Reader Reader::deserialize(const std::string& data) {
     return reader;
 }
 
-void Reader::borrowBook(Book& book, const std::string& dateToReturn) {
+void Reader::borrowBook(Book& book, const string& dateToReturn) {
     borrowedBookTitles.push_back(book.title);
     book.currentBorrowerID = readerID;
     book.borrowDate = getCurrentDate();
     book.returnDate = dateToReturn;
 }
 
-void Reader::returnBook(const std::string& title) {
-    auto it = std::remove(borrowedBookTitles.begin(), borrowedBookTitles.end(), title);
+void Reader::returnBook(const string& title) {
+    auto it = remove(borrowedBookTitles.begin(), borrowedBookTitles.end(), title);
     if (it != borrowedBookTitles.end()) {
         borrowedBookTitles.erase(it, borrowedBookTitles.end());
     }
@@ -79,7 +79,7 @@ string Reader::getCurrentDate() {
 #else
     localtime_r(&nowTime, &nowTm); // Unix/Linux
 #endif
-    std::ostringstream oss;
-    oss << std::put_time(&nowTm, "%d-%m-%Y"); // Формат: dd-mm-yyyy
+    ostringstream oss;
+    oss << put_time(&nowTm, "%d-%m-%Y"); // Формат: dd-mm-yyyy
     return oss.str();
 }

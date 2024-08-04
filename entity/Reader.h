@@ -14,7 +14,7 @@ public:
     string readerID;
     vector<string> borrowedBookTitles;
 
-    Reader(const std::string& p, const std::string& n, const std::string& id);
+    Reader(const string& p, const string& n, const string& id);
 
     void display() const;
     string serialize() const;
@@ -23,7 +23,7 @@ public:
     void returnBook(const string& title);
 
 private:
-    static std::string getCurrentDate();
+    static string getCurrentDate();
 };
 
 #endif // READER_H

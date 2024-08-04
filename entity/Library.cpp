@@ -68,7 +68,7 @@ void Library::displayReaders() const {
     }
 }
 
-Book* Library::findBook(const std::string& title) {
+Book* Library::findBook(const string& title) {
     for (auto& book : books) {
         if (book.title == title) {
             return &book;
@@ -77,7 +77,7 @@ Book* Library::findBook(const std::string& title) {
     return nullptr;
 }
 
-Reader* Library::findReader(const std::string& id) {
+Reader* Library::findReader(const string& id) {
     for (auto& reader : readers) {
         if (reader.readerID == id) {
             return &reader;
@@ -87,33 +87,33 @@ Reader* Library::findReader(const std::string& id) {
 }
 
 Book Library::inputBook() {
-    std::string title, author, genre;
+    string title, author, genre;
 
-    std::cout << "Enter book title: ";
-    std::cin >> std::ws;
-    std::getline(std::cin, title);
+    cout << "Enter book title: ";
+    cin >> ws;
+    getline(cin, title);
 
-    std::cout << "Enter book author: ";
-    std::getline(std::cin, author);
+    cout << "Enter book author: ";
+    getline(cin, author);
 
-    std::cout << "Enter book genre: ";
-    std::getline(std::cin, genre);
+    cout << "Enter book genre: ";
+    getline(cin, genre);
 
     return Book(title, author, genre);
 }
 
 Reader Library::inputReader() {
-    std::string passport, name, readerID;
+    string passport, name, readerID;
 
-    std::cout << "Enter passport number: ";
-    std::cin >> passport;
+    cout << "Enter passport number: ";
+    cin >> passport;
 
-    std::cout << "Enter reader name: ";
-    std::cin.ignore();
-    std::getline(std::cin, name);
+    cout << "Enter reader name: ";
+    cin.ignore();
+    getline(cin, name);
 
-    std::cout << "Enter reader ID: ";
-    std::getline(std::cin, readerID);
+    cout << "Enter reader ID: ";
+    getline(cin, readerID);
 
     return Reader(passport, name, readerID);
 }
