@@ -3,7 +3,6 @@
 #include <fstream>
 #include <sstream>
 #include <filesystem>
-
 #include "Book.h"
 
 using namespace std;
@@ -13,15 +12,15 @@ Book::Book(const string& t, const string& a, const string& g)
 
 void Book::display() const {
     cout << "Title: " << title
-    << ", Author: " << author
-    << ", Genre: " << genre;
+         << ", Author: " << author
+         << ", Genre: " << genre;
 
     if (currentBorrowerID.empty()) {
         cout << ", Status: Available" << endl;
     } else {
         cout << ", Status: Currently borrowed by Reader ID: " << currentBorrowerID
-        << ", Borrowed on: " << borrowDate
-        << ", Return by: " << returnDate << endl;
+             << ", Borrowed on: " << borrowDate
+             << ", Return by: " << returnDate << endl;
     }
 }
 
@@ -44,10 +43,34 @@ Book Book::deserialize(const string& data) {
     getline(iss, rDate);
 
     Book book(title, author, genre);
-
-    book.currentBorrowerID = borrowerId;
-    book.borrowDate = bDate;
-    book.returnDate = rDate;
+    
+    book.setCurrentBorrowerID(borrowerId);
+    book.setBorrowDate(bDate);
+    book.setReturnDate(rDate);
 
     return book;
+}
+
+void Book::setTitle(const string& t) {
+    title = t;
+}
+
+void Book::setAuthor(const string& a) {
+    author = a;
+}
+
+void Book::setGenre(const string& g) {
+    genre = g;
+}
+
+void Book::setCurrentBorrowerID(const string& id) {
+    currentBorrowerID = id;
+}
+
+void Book::setBorrowDate(const string& date) {
+    borrowDate = date;
+}
+
+void Book::setReturnDate(const string& date) {
+    returnDate = date;
 }
