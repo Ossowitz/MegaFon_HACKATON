@@ -74,3 +74,27 @@ void Book::setBorrowDate(const string& date) {
 void Book::setReturnDate(const string& date) {
     returnDate = date;
 }
+
+string Book::getTitle() const {
+    return title;
+}
+
+string Book::getAuthor() const {
+    return author;
+}
+
+string Book::getGenre() const {
+    return genre;
+}
+
+string Book::getCurrentBorrowerID() const {
+    return currentBorrowerID;
+}
+
+string Book::getBorrowDate() const {
+    return borrowDate;
+}
+
+string Book::getReturnDate() const {
+    return returnDate;
+}

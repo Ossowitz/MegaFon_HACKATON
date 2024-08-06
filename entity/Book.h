@@ -27,6 +27,13 @@ public:
     void setCurrentBorrowerID(const string& id);
     void setBorrowDate(const string& date);
     void setReturnDate(const string& date);
+
+    string getTitle() const;
+    string getAuthor() const;
+    string getGenre() const;
+    string getCurrentBorrowerID() const;
+    string getBorrowDate() const;
+    string getReturnDate() const;
 };
 
 #endif // BOOK_H

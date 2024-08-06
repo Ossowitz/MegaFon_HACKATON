@@ -70,7 +70,7 @@ void Library::displayReaders() const {
 
 Book* Library::findBook(const string& title) {
     for (auto& book : books) {
-        if (book.title == title) {
+        if (book.getTitle() == title) {
             return &book;
         }
     }
