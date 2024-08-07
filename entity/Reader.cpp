@@ -57,10 +57,10 @@ Reader Reader::deserialize(const string& data) {
 }
 
 void Reader::borrowBook(Book& book, const string& dateToReturn) {
-    borrowedBookTitles.push_back(book.title);
-    book.currentBorrowerID = readerID;
-    book.borrowDate = getCurrentDate();
-    book.returnDate = dateToReturn;
+    borrowedBookTitles.push_back(book.getTitle());
+    book.setCurrentBorrowerID(readerID);
+    book.setBorrowDate(getCurrentDate());
+    book.setReturnDate(dateToReturn);
 }
 
 void Reader::returnBook(const string& title) {
@@ -82,4 +82,32 @@ string Reader::getCurrentDate() {
     ostringstream oss;
     oss << put_time(&nowTm, "%d-%m-%Y"); // Формат: dd-mm-yyyy
     return oss.str();
+}
+
+string Reader::getPassport() const {
+    return passport;
+}
+
+string Reader::getName() const {
+    return name;
+}
+
+string Reader::getReaderID() const {
+    return readerID;
+}
+
+const vector<string>& Reader::getBorrowedBookTitles() const {
+    return borrowedBookTitles;
+}
+
+void Reader::setPassport(const string& p) {
+    passport = p;
+}
+
+void Reader::setName(const string& n) {
+    name = n;
+}
+
+void Reader::setReaderID(const string& id) {
+    readerID = id;
 }
