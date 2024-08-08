@@ -50,7 +50,7 @@ int main() {
                 std::cout << "Enter return date (dd-mm-yyyy): ";
                 std::getline(std::cin, returnDate);
                 Reader* reader = library.findReader(readerID);
-                if (Book* book = library.findBook(bookTitle); reader && book && book->currentBorrowerID.empty()) {
+                if (Book* book = library.findBook(bookTitle); reader && book && book->getCurrentBorrowerID().empty()) {
                     reader->borrowBook(*book, returnDate);
                 } else {
                     std::cout << "Error: Book is already borrowed or Reader not found." << std::endl;
@@ -67,9 +67,9 @@ int main() {
                 if (Reader* reader = library.findReader(readerID)) {
                     reader->returnBook(bookTitle);
                     if (Book* book = library.findBook(bookTitle)) {
-                        book->currentBorrowerID = "";
-                        book->borrowDate = "";
-                        book->returnDate = "";
+                        book->setCurrentBorrowerID("");
+                        book->setBorrowDate("");
+                        book->setReturnDate("");
                     }
                 } else {
                     std::cout << "Reader not found." << std::endl;

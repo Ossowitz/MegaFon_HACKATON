@@ -79,7 +79,7 @@ Book* Library::findBook(const string& title) {
 
 Reader* Library::findReader(const string& id) {
     for (auto& reader : readers) {
-        if (reader.readerID == id) {
+        if (reader.getReaderID() == id) {
             return &reader;
         }
     }
