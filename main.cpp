@@ -41,29 +41,29 @@ int main() {
                 break;
             }
             case '3': {
-                std::string readerID, bookTitle, returnDate;
-                std::cout << "Enter reader ID: ";
-                std::cin >> readerID;
-                std::cout << "Enter book title: ";
-                std::cin >> std::ws; // Очищаем пробелы
-                std::getline(std::cin, bookTitle);
-                std::cout << "Enter return date (dd-mm-yyyy): ";
-                std::getline(std::cin, returnDate);
+                string readerID, bookTitle, returnDate;
+                cout << "Enter reader ID: ";
+                cin >> readerID;
+                cout << "Enter book title: ";
+                cin >> ws; // Очищаем пробелы
+                getline(cin, bookTitle);
+                cout << "Enter return date (dd-mm-yyyy): ";
+                getline(cin, returnDate);
                 Reader* reader = library.findReader(readerID);
                 if (Book* book = library.findBook(bookTitle); reader && book && book->getCurrentBorrowerID().empty()) {
                     reader->borrowBook(*book, returnDate);
                 } else {
-                    std::cout << "Error: Book is already borrowed or Reader not found." << std::endl;
+                    cout << "Error: Book is already borrowed or Reader not found." << endl;
                 }
                 break;
             }
             case '4': {
-                std::string readerID, bookTitle;
-                std::cout << "Enter reader ID: ";
-                std::cin >> readerID;
-                std::cout << "Enter book title: ";
-                std::cin >> std::ws;
-                std::getline(std::cin, bookTitle);
+                string readerID, bookTitle;
+                cout << "Enter reader ID: ";
+                cin >> readerID;
+                cout << "Enter book title: ";
+                cin >> ws;
+                getline(cin, bookTitle);
                 if (Reader* reader = library.findReader(readerID)) {
                     reader->returnBook(bookTitle);
                     if (Book* book = library.findBook(bookTitle)) {
@@ -72,7 +72,7 @@ int main() {
                         book->setReturnDate("");
                     }
                 } else {
-                    std::cout << "Reader not found." << std::endl;
+                    cout << "Reader not found." << endl;
                 }
                 break;
             }
@@ -87,11 +87,11 @@ int main() {
             case '7': {
                 library.saveBooksToFile(booksFile);
                 library.saveReadersToFile(readersFile);
-                std::cout << "Data saved!" << std::endl;
+                cout << "Data saved!" << endl;
                 break;
             }
             default:
-                std::cout << "Invalid choice, try again." << std::endl;
+                cout << "Invalid choice, try again." << endl;
         }
     }
     while (choice != '7');
